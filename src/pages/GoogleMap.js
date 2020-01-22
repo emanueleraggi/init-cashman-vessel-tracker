@@ -28,7 +28,7 @@ const MapContainer = styled.div`
 const BoatMap = () => (
 	<div className="google-map">
 		<GoogleMapReact
-			bootstrapURLKeys={{ key: 'AIzaSyBm59I3P5VB3JR25MWz-GKgf4PZs8XEsqc' }}
+			bootstrapURLKeys={{ key: '' }}
 			center={{
 				lat: 42.4,
 				lng: -71.1

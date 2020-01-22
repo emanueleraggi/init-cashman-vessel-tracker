@@ -15,8 +15,6 @@ import Navbar from "./components/Navbar";
 function App() {
   return (
     <>
-    {/* Navbar va messa prima di switch perche ce la portiamo 
-        dietro per ogni pagina  che scegliamo */}
     <Navbar /> 
       <Switch>
         <Route exact path="/" component={Home}/>
