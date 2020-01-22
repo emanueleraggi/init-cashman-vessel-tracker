@@ -49,8 +49,8 @@ export default class SingleVessel extends Component {
         size, 
         price, 
         extras, 
-        breakfast, 
-        pets, 
+        // breakfast, 
+        // pets, 
         images
     } = vessel;
 

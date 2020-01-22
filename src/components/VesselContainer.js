@@ -24,10 +24,6 @@ function VesselContainer({context}) {
 export default withVesselConsumer(VesselContainer)
 
 
-
-
-
-
 // import React from 'react'
 // import VesselsFilter from "./VesselFilter"
 // import VesselsList from "./VesselList"

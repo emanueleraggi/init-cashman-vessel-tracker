@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
 
+
 import Home from "./pages/Home";
 import Vessels from "./pages/Vessels";
 import SingleVessel from "./pages/SingleVessel";
 import Error from "./pages/Error";
+import GoogleMap from "./pages/GoogleMap";
 
 import {Route, Switch} from "react-router-dom";
-
 import Navbar from "./components/Navbar";
 
 
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="/" component={Home}/>
         <Route exact path="/vessels" component={Vessels}/>
         <Route exact path="/vessels/:slug" component={SingleVessel}/>
+        <Route exact path="/map" component={GoogleMap} />
         <Route component={Error} />
       </Switch>
     </>
