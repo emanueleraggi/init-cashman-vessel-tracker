@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../images/cashman.ico';
+// import logo from '../images/cashman.ico';
 
 import { FaAlignRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -18,9 +18,9 @@ export default class Navbar extends Component {
 			<nav className="navbar">
 				<div className="nav-center">
 					<div className="nav-header">
-						<Link to="/">
+						{/* <Link to="/">
 							<img src={logo} alt="Cashman Tracker" />
-						</Link>
+						</Link> */}
 						<button type="button" className="nav-btn" onClick={this.handleToggle}>
 							<FaAlignRight className="nav-icon" />
 						</button>
