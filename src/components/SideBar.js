@@ -22,12 +22,12 @@ const Sidebar = () => (
 					<button type="button" id="btnSubmit" class="btn btn-primary mr-3">
 						Download Project Specs
 					</button>
-					<button type="button" id="btnUpload" class="btn btn-primary mr-3">
+					{/* <button type="button" id="btnUpload" class="btn btn-primary mr-3">
 						Upload Changes
 					</button>
 					<button type="button" id="btnMarker" class="btn btn-primary mr-3">
 						...
-					</button>
+					</button> */}
 				</div>
 				{/* <Button>Download Project Data</Button>
 				<Button>Download Project Data</Button> */}

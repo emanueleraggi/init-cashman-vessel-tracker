@@ -267,6 +267,72 @@ import PadreIsland1 from './images_vessels/detail/Padre_Island-detail-1.png';
 import PadreIsland2 from './images_vessels/detail/Padre_Island-detail-2.png';
 import PadreIsland3 from './images_vessels/detail/Padre_Island-detail-3.png';
 
+import img66 from './images_vessels/main/Dredge55.png';
+
+import Dredge551 from './images_vessels/detail/Dredge55-detail-1.png';
+
+import img67 from './images_vessels/main/Dredge_New_York.png';
+
+import DredgeNewYork1 from './images_vessels/detail/Dredge_New_York-detail-1.png';
+import DredgeNewYork2 from './images_vessels/detail/Dredge_New_York-detail-2.png';
+import DredgeNewYork3 from './images_vessels/detail/Dredge_New_York-detail-3.png';
+
+import img68 from './images_vessels/main/Liberty_Island.png';
+
+import LibertyIsland1 from './images_vessels/detail/Liberty_Island-detail-1.png';
+import LibertyIsland2 from './images_vessels/detail/Liberty_Island-detail-2.png';
+import LibertyIsland3 from './images_vessels/detail/Liberty_Island-detail-3.png';
+
+import img69 from './images_vessels/main/Alaska.png';
+
+import Alaska1 from './images_vessels/detail/Alaska-detail-1.png';
+
+import img70 from './images_vessels/main/Dodge_Island.png';
+
+import DodgeIsland1 from './images_vessels/detail/Dodge_Island-detail-1.png';
+import DodgeIsland2 from './images_vessels/detail/Dodge_Island-detail-2.png';
+import DodgeIsland3 from './images_vessels/detail/Dodge_Island-detail-3.png';
+
+import img71 from './images_vessels/main/Dredge53.png';
+
+import img72 from './images_vessels/main/Stuyvesant.png';
+
+import Stuyvesant1 from './images_vessels/detail/Stuyvesant-detail-1.png';
+import Stuyvesant2 from './images_vessels/detail/Stuyvesant-detail-2.png';
+import Stuyvesant3 from './images_vessels/detail/Stuyvesant-detail-3.png';
+
+import img73 from './images_vessels/main/Paula_Lee.png';
+
+import PaulaLee1 from './images_vessels/detail/Paula_Lee-detail-1.png';
+import PaulaLee2 from './images_vessels/detail/Paula_Lee-detail-2.png';
+import PaulaLee3 from './images_vessels/detail/Paula_Lee-detail-3.png';
+
+import img74 from './images_vessels/main/Columbia.png';
+
+import Columbia1 from './images_vessels/detail/Columbia-detail-1.png';
+import Columbia2 from './images_vessels/detail/Columbia-detail-2.png';
+import Columbia3 from './images_vessels/detail/Columbia-detail-3.png';
+
+import img75 from './images_vessels/main/Michigan.png';
+
+import Michigan1 from './images_vessels/detail/Michigan-detail-1.png';
+import Michigan2 from './images_vessels/detail/Michigan-detail-2.png';
+import Michigan3 from './images_vessels/detail/Michigan-detail-3.png';
+
+import img76 from './images_vessels/main/JP_Boisseau.png';
+
+import JPBoisseau1 from './images_vessels/detail/JP_Boisseau-detail-1.png';
+
+import img77 from './images_vessels/main/Delaware_Bay.png';
+
+import DelawareBay1 from './images_vessels/detail/Delaware_Bay-detail-1.png';
+
+import img78 from './images_vessels/main/Atlantic_Salvor.png';
+
+import AtlanticSalvor1 from './images_vessels/detail/Atlantic_Salvor-detail-1.png';
+import AtlanticSalvor2 from './images_vessels/detail/Atlantic_Salvor-detail-2.png';
+import AtlanticSalvor3 from './images_vessels/detail/Atlantic_Salvor-detail-3.png';
+
 export default [
 	{
 		sys: {
@@ -1526,7 +1592,7 @@ export default [
 			featured: false,
 			company: 'Norfolk Dredging',
 			description: 'Clamshell Bucket Dredge',
-			extras: [ "Certified for ocean service', 'Operates on spuds" ],
+			extras: [ 'Certified for ocean service', 'Operates on spuds' ],
 			images: [
 				{
 					fields: {
@@ -1564,7 +1630,7 @@ export default [
 			featured: false,
 			company: 'Norfolk Dredging',
 			description: 'Clamshell Bucket Dredge',
-			extras: [ "Certified for ocean service', 'Anchor system allows deep water operation" ],
+			extras: [ 'Certified for ocean service', 'Anchor system allows deep water operation' ],
 			images: [
 				{
 					fields: {
@@ -1982,7 +2048,7 @@ export default [
 			length: 146,
 			width: 42,
 			callsign: 'NA',
-			MMSI: '338107888',
+			MMSI: 338107888,
 			MMSI_Y_N: true,
 			IMO_Y_N: false,
 			IMO: 'NA',
@@ -2984,6 +3050,629 @@ export default [
 					fields: {
 						file: {
 							url: PadreIsland3
+						}
+					}
+				}
+			]
+		}
+	},
+
+	{
+		sys: {
+			id: '66'
+		},
+		fields: {
+			name: 'Dredge 55',
+			slug: 'Dredge 55',
+			type: 'Bucket Dredge',
+			length: 161,
+			width: 66,
+			callsign: 'WDB4250',
+			MMSI: 366896390,
+			MMSI_Y_N: true,
+			IMO_Y_N: true,
+			IMO: 1101368,
+			capacity: 12, // 12-40cy
+			featured: false,
+			company: 'Great Lakes Dredge and Dock',
+			description: 'Bucket Dredge',
+			extras: [ 'Total installed power- 1745hp' ],
+			images: [
+				{
+					fields: {
+						file: {
+							url: img66
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: Dredge551
+						}
+					}
+				}
+			]
+		}
+	},
+
+	{
+		sys: {
+			id: '67'
+		},
+		fields: {
+			name: 'Dredge New York',
+			slug: 'Dredge New York',
+			type: 'Excavator',
+			length: 200,
+			width: 57,
+			callsign: 'WDA7928',
+			MMSI: 369118000,
+			MMSI_Y_N: true,
+			IMO_Y_N: true,
+			IMO: 774,
+			capacity: 13, // 13-24 cy
+			featured: false,
+			company: 'Great Lakes Dredge and Dock',
+			description: 'Excavator',
+			extras: [ "Fuel Capacity- 60,000 gal', 'Total installed power- 3,434hp" ],
+			images: [
+				{
+					fields: {
+						file: {
+							url: img67
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: DredgeNewYork1
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: DredgeNewYork2
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: DredgeNewYork3
+						}
+					}
+				}
+			]
+		}
+	},
+
+	{
+		sys: {
+			id: '68'
+		},
+		fields: {
+			name: 'Liberty Island',
+			slug: 'Liberty Island',
+			type: 'Hopper Dredge',
+			length: 325,
+			width: 59,
+			callsign: 'WDFP',
+			MMSI: 369053000,
+			MMSI_Y_N: true,
+			IMO_Y_N: true,
+			IMO: 9224831,
+			capacity: 6540, // 6.540cy
+			featured: false,
+			company: 'Great Lakes Dredge and Dock',
+			description: 'Hopper Dredge',
+			extras: [ 'Propulsion power- 9,920hp', 'Dredge pump power- 8,200hp', 'Total installed power- 15,566hp' ],
+			images: [
+				{
+					fields: {
+						file: {
+							url: img68
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: LibertyIsland1
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: LibertyIsland2
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: LibertyIsland3
+						}
+					}
+				}
+			]
+		}
+	},
+
+	{
+		sys: {
+			id: '69'
+		},
+		fields: {
+			name: 'Alaska',
+			slug: 'Alaska',
+			type: 'Cutter Suction Dredge',
+			length: 220,
+			width: 68,
+			callsign: 'WDD5749',
+			MMSI: 367131000,
+			MMSI_Y_N: true,
+			IMO_Y_N: true,
+			IMO: 32,
+			capacity: 34, // in
+			featured: false,
+			company: 'Great Lakes Dredge and Dock',
+			description: 'Cutter Suction Dredge',
+			extras: [ 'Cutter Power- 1,500hp', 'Total installed power- 11,315hp' ],
+			images: [
+				{
+					fields: {
+						file: {
+							url: img69
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: Alaska1
+						}
+					}
+				}
+			]
+		}
+	},
+
+	{
+		sys: {
+			id: '70'
+		},
+		fields: {
+			name: 'Dodge Island',
+			slug: 'Dodge Island',
+			type: 'Hopper Dredge',
+			length: 281,
+			width: 53,
+			callsign: 'WDB4450',
+			MMSI: 303589000,
+			MMSI_Y_N: true,
+			IMO_Y_N: true,
+			IMO: 7917800,
+			capacity: 3600, // cy
+			featured: false,
+			company: 'Great Lakes Dredge and Dock',
+			description: 'Hopper Dredge',
+			extras: [ 'Propulsion power- 4,350hp', 'Dredge pump power- 3,000hp', 'Total installed power- 10,929hp' ],
+			images: [
+				{
+					fields: {
+						file: {
+							url: img70
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: DodgeIsland1
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: DodgeIsland2
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: DodgeIsland3
+						}
+					}
+				}
+			]
+		}
+	},
+
+	{
+		sys: {
+			id: '71'
+		},
+		fields: {
+			name: 'Dredge53',
+			slug: 'Dredge53',
+			type: 'Bucket Dredge',
+			length: 165,
+			width: 60,
+			callsign: 'NA',
+			MMSI: 'NA',
+			MMSI_Y_N: true,
+			IMO_Y_N: true,
+			IMO: 'NA',
+			capacity: 10, // 10-30cy
+			featured: false,
+			company: 'Great Lakes Dredge and Dock',
+			description: 'Bucket Dredge',
+			extras: [ 'Fuel Capacity- 100,500 gal', 'Total installed power- 2,550hp' ],
+			images: [
+				{
+					fields: {
+						file: {
+							url: img71
+						}
+					}
+				}
+			]
+		}
+	},
+
+	{
+		sys: {
+			id: '72'
+		},
+		fields: {
+			name: 'Stuyvesant',
+			slug: 'Stuyvesant',
+			type: 'Hopper Dredge',
+			length: 372,
+			width: 72,
+			callsign: 'WNFX',
+			MMSI: 368098000,
+			MMSI_Y_N: true,
+			IMO_Y_N: true,
+			IMO: 7915838,
+			capacity: 11144, //cy
+			featured: false,
+			company: 'Dutra',
+			description: 'Hopper Dredge',
+			extras: [
+				'Can work both in tropical and arctic conditions',
+				'Deep dredging capability',
+				'Suitable for working in coastal waters',
+				'The vertical hopper walls guarantee fast and effective dumping of sticky materials'
+			],
+			images: [
+				{
+					fields: {
+						file: {
+							url: img72
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: Stuyvesant1
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: Stuyvesant2
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: Stuyvesant3
+						}
+					}
+				}
+			]
+		}
+	},
+
+	{
+		sys: {
+			id: '73'
+		},
+		fields: {
+			name: 'Paula Lee',
+			slug: 'Paula Lee',
+			type: 'Bucket Dredge',
+			length: 250,
+			width: 68,
+			callsign: 'WDE2410',
+			MMSI: 367324810,
+			MMSI_Y_N: true,
+			IMO_Y_N: false,
+			IMO: 'NA',
+			capacity: 'NA',
+			featured: false,
+			company: 'Dutra',
+			description: 'Bucket Dredge',
+			extras: [
+				'Lifting capacity- 225 short tons over stern with 140ft boom at 42ft radius- 195 short tons fully revolving at 140ft boom and 42ft radius',
+				'Buckets- 26yd cable arm environmental- 20yd Atlas- 15 yd Rehandle- 10yd Owens'
+			],
+			images: [
+				{
+					fields: {
+						file: {
+							url: img73
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: PaulaLee1
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: PaulaLee2
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: PaulaLee3
+						}
+					}
+				}
+			]
+		}
+	},
+
+	{
+		sys: {
+			id: '74'
+		},
+		fields: {
+			name: 'Columbia',
+			slug: 'Columbia',
+			type: 'Hopper Dredge',
+			length: 330,
+			width: 50,
+			callsign: 'WDF3225',
+			MMSI: 367437430,
+			MMSI_Y_N: true,
+			IMO_Y_N: true,
+			IMO: 7428263,
+			capacity: 4350, // cy
+			featured: false,
+			company: 'Dutra',
+			description: 'Hopper Dredge',
+			extras: [ 'Max dredging depth- 65ft', 'Pump power- 1 at 1,950hp', 'Propulsion power- 2 at 1,500hp' ],
+			images: [
+				{
+					fields: {
+						file: {
+							url: img74
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: Columbia1
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: Columbia2
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: Columbia3
+						}
+					}
+				}
+			]
+		}
+	},
+
+	{
+		sys: {
+			id: '75'
+		},
+		fields: {
+			name: 'Michigan',
+			slug: 'Michigan',
+			type: 'Bucket Dredge',
+			length: 150,
+			width: 44,
+			callsign: 'WAM5786',
+			MMSI: 367029520,
+			MMSI_Y_N: true,
+			IMO_Y_N: true,
+			IMO: 7428263,
+			capacity: 'NA',
+			featured: false,
+			company: 'Donjon Marine Co',
+			description: 'Bucket Dredge',
+			extras: [
+				'Fuel Capacity- 9,999 US gal',
+				'Dredge combination- lift, drag, clam, backhoe (max dig depth of 55ft)'
+			],
+			images: [
+				{
+					fields: {
+						file: {
+							url: img75
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: Michigan1
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: Michigan2
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: Michigan3
+						}
+					}
+				}
+			]
+		}
+	},
+
+	{
+		sys: {
+			id: '76'
+		},
+		fields: {
+			name: 'JP Boisseau',
+			slug: 'JP Boisseau',
+			type: 'Excavator',
+			length: 173,
+			width: 54,
+			callsign: 'WDB5447',
+			MMSI: 366909730,
+			MMSI_Y_N: true,
+			IMO_Y_N: true,
+			IMO: 1071703,
+			capacity: 17, //cy
+			featured: false,
+			company: 'Donjon Marine Co',
+			description: 'Excavator',
+			extras: [ 'Fuel Capacity- 12,000 US gal' ],
+			images: [
+				{
+					fields: {
+						file: {
+							url: img76
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: JPBoisseau1
+						}
+					}
+				}
+			]
+		}
+	},
+
+	{
+		sys: {
+			id: '77'
+		},
+		fields: {
+			name: 'Delaware Bay',
+			slug: 'Delaware Bay',
+			type: 'Bucket Dredge',
+			length: 225,
+			width: 54,
+			callsign: 'WDD3301',
+			MMSI: 367128570,
+			MMSI_Y_N: true,
+			IMO_Y_N: true,
+			IMO: 1164613,
+			capacity: 15, //cy
+			featured: false,
+			company: 'Donjon Marine Co',
+			description: 'Bucket Dredge',
+			extras: [ 'Fuel Capacity- 6,300 US gal', 'Dredge combination- lift, drag, clam' ],
+			images: [
+				{
+					fields: {
+						file: {
+							url: img77
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: DelawareBay1
+						}
+					}
+				}
+			]
+		}
+	},
+
+	{
+		sys: {
+			id: '78'
+		},
+		fields: {
+			name: 'Atlantic Salvor',
+			slug: 'Atlantic Salvor',
+			type: 'Tug',
+			length: 151,
+			width: 40,
+			callsign: 'WCX9569',
+			MMSI: 366744010,
+			MMSI_Y_N: true,
+			IMO_Y_N: true,
+			IMO: 7719624,
+			capacity: 350000, // 350,000 lbs
+			featured: false,
+			company: 'Donjon Marine Co',
+			description: 'Bucket Dredge',
+			extras: [ 'No information available' ],
+			images: [
+				{
+					fields: {
+						file: {
+							url: img78
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: AtlanticSalvor1
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: AtlanticSalvor2
+						}
+					}
+				},
+				{
+					fields: {
+						file: {
+							url: AtlanticSalvor3
 						}
 					}
 				}

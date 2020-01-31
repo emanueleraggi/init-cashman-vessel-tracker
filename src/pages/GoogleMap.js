@@ -66,9 +66,37 @@ class BoatMap extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			buttonEnabled: true
+			buttonEnabled: true,
+			buttonClickedAt: null,
+			progress: 0
 		};
 		this.updateRequest = this.updateRequest.bind(this);
+		this.countDownInterval = null;
+	}
+
+	componentDidMount() {
+		this.countDownInterval = setInterval(() => {
+			if (!this.state.buttonClickedAt) return;
+			const date = new Date();
+			const diff = Math.floor((date.getTime() - this.state.buttonClickedAt.getTime()) / 1000);
+
+			if (diff < 90) {
+				this.setState({
+					progress: diff,
+					buttonEnabled: false
+				});
+			} else {
+				this.setState({
+					progress: 0,
+					buttonClickedAt: null,
+					buttonEnabled: true
+				});
+			}
+		}, 500);
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.countdownInterval);
 	}
 
 	updateRequest() {
@@ -115,7 +143,9 @@ class BoatMap extends Component {
 				console.log('Error' + e);
 			});
 		this.setState({
-			buttonEnabled: false
+			buttonEnabled: false,
+			buttonClickedAt: new Date(),
+			progress: 0
 		});
 		setTimeout(() => {
 			this.setState({ buttonEnabled: true });
@@ -305,7 +335,7 @@ class BoatMap extends Component {
 					</select>
 
 					<div class="progress-circle p0">
-						<span>0%</span>
+						<span>{this.state.progress}%</span>
 						<div class="left-half-clipper">
 							<div class="first50-bar" />
 							<div class="value-bar" />
