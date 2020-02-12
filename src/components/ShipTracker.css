@@ -1,0 +1,19 @@
+html,
+body,
+.flex-vertical {
+	height: 100%;
+	margin: 0;
+}
+.flex-vertical {
+	display: flex;
+	flex-flow: column;
+}
+.ship-tracker {
+	display: flex;
+	flex-flow: column;
+	flex: 1;
+	overflow: hidden;
+}
+tbody {
+	overflow-y: scroll;
+}

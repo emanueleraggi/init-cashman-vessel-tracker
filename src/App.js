@@ -2,8 +2,6 @@ import React from 'react';
 import './App.css';
 import './GoogleMap.css';
 import './ProgressBar.css';
-
-
 import Home from "./pages/Home";
 import Vessels from "./pages/Vessels";
 import SingleVessel from "./pages/SingleVessel";
@@ -12,6 +10,21 @@ import GoogleMap from "./pages/GoogleMap";
 
 import {Route, Switch} from "react-router-dom";
 import Navbar from "./components/Navbar";
+
+
+// Bodyparser
+// app.use(express.urlencoded({ extended: false }));
+
+// Express Session
+// app.use(
+// 	session({
+// 		secret: 'secret',
+// 		resave: true,
+// 		saveUninitialized: true
+// 	})
+// );
+
+// Routes
 
 
 function App() {
