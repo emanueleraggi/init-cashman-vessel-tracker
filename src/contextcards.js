@@ -97,32 +97,7 @@ class VesselProvider extends Component {
 		// than I do wanna return the vessels that in fact are matching the vessel type I am passing
 		// Filter by type
 		if (type !== 'all') {
-			tempVessles = tempVessles.filter((vessel) => vessel.type === type);
-		}
-		// Filter by equipment type
-		if (type !== 'Bucket') {
-			tempVessles = tempVessles.filter((vessel) => vessel.type === type);
-		}
-		if (type !== 'Excavator') {
-			tempVessles = tempVessles.filter((vessel) => vessel.type === type);
-		}
-		if (type !== 'Tug') {
-			tempVessles = tempVessles.filter((vessel) => vessel.type === type);
-		}
-		if (type !== 'Hopper') {
-			tempVessles = tempVessles.filter((vessel) => vessel.type === type);
-		}
-		if (type !== 'Cutter') {
-			tempVessles = tempVessles.filter((vessel) => vessel.type === type);
-		}
-		if (type !== 'Crane') {
-			tempVessles = tempVessles.filter((vessel) => vessel.type === type);
-		}
-		if (type !== 'Crewboat') {
-			tempVessles = tempVessles.filter((vessel) => vessel.type === type);
-		}
-		if (type !== 'Dustpan') {
-			tempVessles = tempVessles.filter((vessel) => vessel.type === type);
+			tempVessles = tempVessles.filter((vessel) => vessel.type === this.props.activeShipTypes);
 		}
 
 		// Change state

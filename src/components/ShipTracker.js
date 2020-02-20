@@ -3,18 +3,18 @@ import { Table } from 'reactstrap';
 import '../components/ShipTracker.css';
 
 import donjonImage from '../logos/DJ5.png';
-import dutraImage from '../logos/dutra.png';
-import glddImage from '../logos/greatlakesdredgeanddock.png';
+// import dutraImage from '../logos/dutra.png';
+// import glddImage from '../logos/greatlakesdredgeanddock.png';
 
-import mansonImage from '../logos/mansonconstruction.png';
-import marinexImage from '../logos/Marinex2.png';
-import mikehooksImage from '../logos/MH.png';
+// import mansonImage from '../logos/mansonconstruction.png';
+// import marinexImage from '../logos/Marinex2.png';
+// import mikehooksImage from '../logos/MH.png';
 
-import norfolkImage from '../logos/ND7.png';
-import oprionImage from '../logos/ORN4.png';
-import usaceImage from '../logos/USACE4.png';
-import weeksImage from '../logos/weeksmarine.png';
-import cashmanDredgingImage from '../logos/cashmandredging.png';
+// import norfolkImage from '../logos/ND7.png';
+// import oprionImage from '../logos/ORN4.png';
+// import usaceImage from '../logos/USACE4.png';
+// import weeksImage from '../logos/weeksmarine.png';
+// import cashmanDredgingImage from '../logos/cashmandredging.png';
 
 // import defaultImg from '../logos/cashmandredging.png';
 
@@ -102,19 +102,19 @@ const shipCompanyMap = {
 	ATCHAFALAYA: 'CASHMANDREDGING'
 };
 
-const companyImageMap = {
-	DONJON: donjonImage,
-	DUTRA: dutraImage,
-	GREATLAKESDREDGEANDDOCK: glddImage,
-	MANSON: mansonImage,
-	MARINEX: marinexImage,
-	MIKEHOOKS: mikehooksImage,
-	NORFOLK: norfolkImage,
-	ORION: oprionImage,
-	USACE: usaceImage,
-	WEEKS: weeksImage,
-	CASHMANDREDGING: cashmanDredgingImage
-};
+// const companyImageMap = {
+// 	DONJON: donjonImage,
+// 	DUTRA: dutraImage,
+// 	GREATLAKESDREDGEANDDOCK: glddImage,
+// 	MANSON: mansonImage,
+// 	MARINEX: marinexImage,
+// 	MIKEHOOKS: mikehooksImage,
+// 	NORFOLK: norfolkImage,
+// 	ORION: oprionImage,
+// 	USACE: usaceImage,
+// 	WEEKS: weeksImage,
+// 	CASHMANDREDGING: cashmanDredgingImage
+// };
 
 // const associationMap = Object.values(shipCompanyMap).reduce(
 // 	(acc, curr) => ({
@@ -127,24 +127,30 @@ const companyImageMap = {
 // console.log(associationMap);
 // console.log(companyImageMap);
 
-const Ship = ({ ship }) => {
+const Ship = ({ ship, logoMap }) => {
 	const shipName = ship.NAME;
 	const company = shipCompanyMap[shipName];
+	console.log({ company });
+	const img = logoMap[company.split(' ').join('').toUpperCase()]; // FIX ME
+	console.log({ img });
 
-	const shipImage = companyImageMap[company];
+	function handleMarkerClick() {
+		console.log('marker clicked');
+	}
+
+	// const shipImage = companyImageMap[company];
 	return (
-		<div>
+		<div onClick={handleMarkerClick}>
 			{/* Render shipImage image */}
-			<img src={shipImage} alt="Logo" />
+			<img src={img} alt="Logo" />
 		</div>
 	);
 };
 export { Ship };
 
-const ShipTracker = ({ ships }) => {
-	const handleRowClick = (rowValue) => {
-		console.log(rowValue);
-	};
+const ShipTracker = ({ ships, setActiveShip }) => {
+	console.log('These are the ships: ', { ships });
+
 	return (
 		<div className="ship-tracker">
 			<Table className="flags-table" responsive hover>
@@ -166,7 +172,7 @@ const ShipTracker = ({ ships }) => {
 						const { IMO, NAME, CALLSIGN, HEADING, SOG, MMSI, LONGITUDE, LATITUDE } = ship;
 						const cells = [ NAME, CALLSIGN, HEADING, SOG, IMO, MMSI, LONGITUDE, LATITUDE ];
 						return (
-							<tr onClick={() => handleRowClick(ship)} key={index}>
+							<tr onClick={() => setActiveShip(NAME, LATITUDE, LONGITUDE)} key={index}>
 								<th scope="row">{index}</th>
 								{cells.map((cell) => <td>{cell}</td>)}
 							</tr>

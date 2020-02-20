@@ -19,19 +19,6 @@ tbody {
 	cursor: default;
 }
 
-/* .column {
-	float: left;
-	width: 33.33%;
-	padding: 5px;
-} */
-
-/* Clearfix (clear floats) */
-/* .row::after {
-	content: "";
-	clear: both;
-	display: table;
-} */
-
 .image-sizing-primary {
 	max-width: 100%;
 }
@@ -48,7 +35,6 @@ tbody {
 	left: 50%;
 }
 
-.btn-marker {
-	/* width: 70px;
-	height: 70px; */
+.thick {
+	font-weight: bold;
 }
