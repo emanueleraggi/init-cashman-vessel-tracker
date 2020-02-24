@@ -13,7 +13,6 @@ import Client from '../Contentful';
 // import MapControl from '../components/MapControl';
 // import { MarkerClickHandle } from '../components/ShipTracker';
 
-
 const MapContainer = styled.div`
 	display: grid;
 	grid-template-columns: 2fr 1fr;
@@ -149,6 +148,13 @@ class BoatMap extends Component {
 		console.log(e.target.value);
 	};
 
+	handleMarkerClick = (event, data) => {
+		console.log(event.target, data);
+		// console.log(data.name);
+		// return data;
+		this.props.setActiveShip(data.NAME, data.LATITUDE, data.LONGITUDE);
+	};
+
 	render() {
 		return (
 			<div className="google-map">
@@ -168,16 +174,17 @@ class BoatMap extends Component {
 					{this.state.ships.map((ship) => (
 						<Ship
 							ship={ship}
-							key={ship.CALLSIGN}
+							key={ship.MMSI}
 							lat={ship.LATITUDE}
 							lng={ship.LONGITUDE}
 							logoMap={this.state.logoMap}
+							logoClick={this.handleMarkerClick}
 						/>
 					))}
 
-					<select className="combo-companies" onClick={this.props.handleDropdownChange}>
+					{/* <select className="combo-companies" onClick={this.props.handleDropdownChange}>
 						<option value="All">All</option>
-						{/* <option value="Cashman Dredging">Cashman Dredging</option>
+						<option value="Cashman Dredging">Cashman Dredging</option>
 						<option value="Donjon">Donjon</option>
 						<option value="Dutra">Dutra</option>
 						<option value="Great Lakes Dredge and Dock">Great Lakes Dredge and Dock</option>
@@ -186,19 +193,22 @@ class BoatMap extends Component {
 						<option value="Norfolk">Norfolk</option>
 						<option value="Orion">Orion</option>
 						<option value="USACE">USACE</option>
-						<option value="Weeks">Weeks</option> */}
-						{this.state.shipTypes.map((type) => (
-							<option
-								className={this.state.activeShipTypes.includes(type) ? 'active' : ''}
-								key={type}
-								value={type}
-							>
-								{type}
-							</option>
-						))}
-					</select>
+						<option value="Weeks">Weeks</option>
+						{this.state.shipTypes.map((type) => {
+							console.log(type);
+							return (
+								<option
+									className={this.state.activeShipTypes.includes(type) ? 'active' : ''}
+									key={type.images.sys.id}
+									value={type}
+								>
+									{type}
+								</option>
+							);
+						})}
+					</select> */}
 
-					<div class="progress-circle p0">
+					{/* <div class="progress-circle p0">
 						<span>{this.state.progress}%</span>
 						<div class="left-half-clipper">
 							<div class="first50-bar" />
@@ -207,7 +217,7 @@ class BoatMap extends Component {
 					</div>
 					<button className="btn-next-request" onClick={() => this.updateRequest()}>
 						Time to Next API Request
-					</button>
+					</button> */}
 				</GoogleMapReact>
 			</div>
 		);
@@ -261,13 +271,28 @@ export default class GoogleMap extends React.Component {
 	};
 
 	render() {
+		// const images = markedShip ? markedShip.images : null;
+
 		return (
 			<MapContainer>
 				{/* This is the Google Map Tracking Page */}
 				<pre>{JSON.stringify(this.state.activeShip, null, 2)}</pre>
-				<BoatMap activeShip={this.state.activeShip} handleDropdownChange={this.handleDropdownChange} />
-				<SideBar activeShip={this.state.activeShip} activeShipTypes={this.state.activeShipTypes} />
-				<ShipTracker ships={this.state.ships} setActiveShip={this.setActiveShip} />
+
+				<BoatMap
+					setActiveShip={this.setActiveShip}
+					activeShip={this.state.activeShip}
+					handleDropdownChange={this.handleDropdownChange}
+				/>
+				<SideBar
+					// markedShip={images}
+					activeShip={this.state.activeShip}
+					activeShipTypes={this.state.activeShipTypes}
+				/>
+				<ShipTracker
+					ships={this.state.ships}
+					setActiveShip={this.setActiveShip}
+					onMarkerClick={this.handleMarkerClick}
+				/>
 			</MapContainer>
 		);
 	}

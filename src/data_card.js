@@ -1256,27 +1256,6 @@ export default [
 	},
 	{
 		sys: {
-			id: '56'
-		},
-		fields: {
-			name: 'Glenn Edwards',
-			slug: 'Glenn Edwards',
-			type: 'Hopper',
-			company: 'Manson Construction',
-			description: 'For a description of the project view the specification included',
-			images: [
-				{
-					fields: {
-						file: {
-							url: img56
-						}
-					}
-				}
-			]
-		}
-	},
-	{
-		sys: {
 			id: '57'
 		},
 		fields: {
