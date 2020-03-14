@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import GoogleMapReact from 'google-map-react';
 // import { Marker } from "google-maps-react";
-// import {InfoWindow} from 'google-map-react';
+// import { InfoWindow } from 'google-map-react';
 import ShipTracker from '../components/ShipTracker';
 import SideBar from '../components/SideBar';
 import { Ship } from '../components/ShipTracker';
 import Client from '../Contentful';
+// import InfoWindowMap from '../components/InfoWindowEx';
+// import InfoWindowEx from '../components/InfoWindowEx';
 
 // import icon from '../logos/weeksmarine.png';
 
 // import MapControl from '../components/MapControl';
 // import { MarkerClickHandle } from '../components/ShipTracker';
+// 	grid-template-areas: "google-map   sidebar" "ship-tracker sidebar";
 
 const MapContainer = styled.div`
 	display: grid;
@@ -56,14 +59,15 @@ class BoatMap extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			buttonEnabled: true,
-			buttonClickedAt: null,
+			buttonEnabled: false,
+			buttonClickedAt: new Date(),
 			progress: 0,
 			ships: [],
 			type: 'All',
 			shipTypes: [],
 			activeShipTypes: [],
 			logoMap: {}
+			// showingInfoWindow: false
 		};
 		this.updateRequest = this.updateRequest.bind(this);
 		this.countDownInterval = null;
@@ -71,30 +75,37 @@ class BoatMap extends Component {
 
 	async componentDidMount() {
 		this.countDownInterval = setInterval(() => {
-			if (!this.state.buttonClickedAt) return;
-			const date = new Date();
-			const diff = Math.floor((date.getTime() - this.state.buttonClickedAt.getTime()) / 1000);
-
-			if (diff < 90) {
-				this.setState({
-					progress: diff,
-					buttonEnabled: false
-				});
-			} else {
-				this.setState({
-					progress: 0,
-					buttonClickedAt: null,
-					buttonEnabled: true
-				});
-			}
+			// if (!this.state.buttonClickedAt) return;
+			// const date = new Date();
+			// const diff = Math.floor((date.getTime() - this.state.buttonClickedAt.getTime()) / 1000);
+			// if (diff < 90) {
+			// 	this.setState({
+			// 		progress: diff,
+			// 		buttonEnabled: false
+			// 	});
+			// } else {
+			// 	this.setState({
+			// 		progress: 0,
+			// 		buttonClickedAt: null,
+			// 		buttonEnabled: true
+			// 	});
+			// }
 		}, 500);
+
 		await this.updateRequest();
+
+		let newShips = localStorage.getItem('shipData');
+		debugger;
+
+		if (newShips) {
+			this.setState({ ships: newShips });
+		}
 
 		const shipTypeResults = await Client.getEntries({
 			content_type: 'cashmanCompetitors'
 		});
 
-		console.log(shipTypeResults);
+		// console.log(shipTypeResults);
 		const shipTypes = shipTypeResults.items.map((data) => data.fields);
 
 		const logoMap = shipTypes.reduce((acc, type) => {
@@ -103,42 +114,41 @@ class BoatMap extends Component {
 				[type.name]: type.images.fields.file.url
 			};
 		}, {});
-		console.log({ shipTypes });
+		// console.log({ shipTypes });
 		this.setState({
 			logoMap
 		});
+
+		// let updateInterval = setInterval(() => {
+		// 	this.updateRequest();
+		// }, 60 * 1000);
+		// this.setState({ updateInterval });
 	}
 
 	componentDidUpdate(prevProps, prevState) {
 		if (this.state.type !== prevState.type) {
-			// The user has selected a different value from the dropdown
-			// To get this value: this.state.type
-			// do anything you want here...
 			console.log('dropdown value changed for ' + this.state.type);
 		}
 	}
 
 	componentWillUnmount() {
+		// this.state.updateInterval;
 		clearInterval(this.countdownInterval);
 	}
 
 	async updateRequest() {
 		const url = 'http://localhost:3001/hello';
-		console.log(url);
+		// console.log(url);
 		const fetchingData = await fetch(url);
 		const ships = await fetchingData.json();
+		console.log('fetched ships', ships);
 
-		console.log(ships);
+		// console.log(ships);
 
-		this.setState({
-			buttonEnabled: false,
-			buttonClickedAt: new Date(),
-			progress: 0,
-			ships
-		});
-		setTimeout(() => {
-			this.setState({ buttonEnabled: true });
-		});
+		localStorage.setItem('shipData', ships);
+		// setTimeout(() => {
+		// 	this.setState({ buttonEnabled: true });
+		// });
 	}
 
 	handleChange = (e) => {
@@ -149,22 +159,26 @@ class BoatMap extends Component {
 	};
 
 	handleMarkerClick = (event, data) => {
+		this.props.setActiveShip(data.AIS.NAME, data.AIS.LATITUDE, data.AIS.LONGITUDE);
+		console.log('marker click');
 		console.log(event.target, data);
-		// console.log(data.name);
+		console.log(data.AIS.NAME);
 		// return data;
-		this.props.setActiveShip(data.NAME, data.LATITUDE, data.LONGITUDE);
+		// this.props.setActiveShip(data.NAME, data.LATITUDE, data.LONGITUDE, this.state.ships.images);
 	};
 
 	render() {
+		console.log('ships ', this.state.ships);
 		return (
 			<div className="google-map">
 				<GoogleMapReact
+					// ships={this.state.ships}
 					bootstrapURLKeys={{ key: 'AIzaSyBm59I3P5VB3JR25MWz-GKgf4PZs8XEsqc' }}
 					center={{
-						lat: this.props.activeShip ? this.props.activeShip.latitude : 42.4,
-						lng: this.props.activeShip ? this.props.activeShip.longitude : -71.1
+						lat: this.props.activeShip ? this.props.activeShip.latitude : 37.99,
+						lng: this.props.activeShip ? this.props.activeShip.longitude : -97.31
 					}}
-					zoom={8}
+					zoom={5.5}
 				>
 					{/* {filteredShips.map((ship) => (
 						<Ship ship={ship} key={ship.CALLSIGN} lat={ship.LATITUDE} lng={ship.LONGITUDE} />
@@ -174,14 +188,20 @@ class BoatMap extends Component {
 					{this.state.ships.map((ship) => (
 						<Ship
 							ship={ship}
-							key={ship.MMSI}
-							lat={ship.LATITUDE}
-							lng={ship.LONGITUDE}
+							key={ship.AIS.MMSI}
+							lat={ship.AIS.LATITUDE}
+							lng={ship.AIS.LONGITUDE}
 							logoMap={this.state.logoMap}
 							logoClick={this.handleMarkerClick}
+
+							// windowClickOpen={this.handleWindow}
 						/>
 					))}
 
+					{/* <InfoWindow
+						visible={this.state.showingInfoWindow}
+						onClose={this.onClose}
+					/> */}
 					{/* <select className="combo-companies" onClick={this.props.handleDropdownChange}>
 						<option value="All">All</option>
 						<option value="Cashman Dredging">Cashman Dredging</option>
@@ -218,6 +238,15 @@ class BoatMap extends Component {
 					<button className="btn-next-request" onClick={() => this.updateRequest()}>
 						Time to Next API Request
 					</button> */}
+
+					{/* <InfoWindowEx marker={this.state.activeMarker} visible={this.state.showingInfoWindow}>
+						<div>
+							<h3>{this.state.selectedPlace.name}</h3>
+							<button type="button" onClick={this.showDetails.bind(this, this.state.selectedPlace)}>
+								Show details
+							</button>
+						</div>
+					</InfoWindowEx> */}
 				</GoogleMapReact>
 			</div>
 		);
@@ -226,24 +255,24 @@ class BoatMap extends Component {
 
 export default class GoogleMap extends React.Component {
 	state = {
-		ships: [],
 		activeShipTypes: [],
 		activeCompanies: [],
 		activeShip: null
 	};
 
-	async componentDidMount() {
-		const url = 'http://localhost:3001/hello';
-		console.log(url);
-		const fetchingData = await fetch(url);
-		const ships = await fetchingData.json();
+	// async componentDidMount() {
+	// 	const url = 'http://localhost:3001/hello';
+	// 	// console.log(url);
+	// 	const fetchingData = await fetch(url);
+	// 	const ships = await fetchingData.json();
 
-		console.log(ships);
+	// 	console.log('fetched ships', ships);
+	// 	//console.log(ships);
 
-		this.setState({
-			ships
-		});
-	}
+	// 	this.setState({
+	// 		ships
+	// 	});
+	// }
 
 	handleDropdownChange = (e) => {
 		const shipType = e.target.value;
@@ -272,16 +301,15 @@ export default class GoogleMap extends React.Component {
 
 	render() {
 		// const images = markedShip ? markedShip.images : null;
-
 		return (
 			<MapContainer>
 				{/* This is the Google Map Tracking Page */}
-				<pre>{JSON.stringify(this.state.activeShip, null, 2)}</pre>
-
+				{/* <pre>{JSON.stringify(this.state.activeShip, null, 2)}</pre> */}
 				<BoatMap
 					setActiveShip={this.setActiveShip}
 					activeShip={this.state.activeShip}
 					handleDropdownChange={this.handleDropdownChange}
+					// activeWindow={this.setActiveWindow}
 				/>
 				<SideBar
 					// markedShip={images}
