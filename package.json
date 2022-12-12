@@ -9,7 +9,7 @@
 		"@testing-library/user-event": "^7.1.2",
 		"contentful": "^7.13.1",
 		"corsproxy": "^1.5.0",
-		"express": "^4.17.1",
+		"express": "^4.17.3",
 		"express-generator": "^4.16.1",
 		"google-map-react": "^1.1.5",
 		"mongoose": "^5.8.11",
